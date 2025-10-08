@@ -1,0 +1,15 @@
+{
+    "multipleSetup": {
+        "nodesConfig": {
+            "deltaProgress": "35000000000",
+            "deltaResend": "17000000000",
+            "deltaRound": "30000000000",
+            "deltaGrace": "12000000000",
+            "deltaC": "86400000000000",
+            "alphaPPB": "5000000",
+            "deltaStage": "60000000000",
+            "rMax": "6",
+            "encodedConfigVersion": "1"
+        }
+    }
+}
