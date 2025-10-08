@@ -31,6 +31,16 @@ task("validateFeedPrices").addParam('deviation', 'chain id of deployment chain',
   console.log("threshold deviation - ", deviation, "%")
 
   const feedsForCheck = JSON.parse(fs.readFileSync(path.join(__dirname, "test_output_exclude.json")).toString());
+  const networkName = hre.network.name
+  if (networkName === "opbnbTestnet") {
+    const testnetFeeds = JSON.parse(fs.readFileSync(path.join(__dirname, "aggregators-5611.json")).toString());
+    for (const feed in feedsForCheck) {
+      feedsForCheck[feed] = testnetFeeds[feed]
+    }
+  } else if (networkName !== "opbnb") {
+    throw new Error("support only 'opbnb' and 'opbnbTestnet' networks")
+  }
+
   const uniquePair = JSON.parse(fs.readFileSync(path.join(__dirname, "ignition/data-feeds.json")).toString()).uniquePair
 
   const addr = "0x73b88119D9F66E33098Eb99BfE51E0763aF3EE1a"
